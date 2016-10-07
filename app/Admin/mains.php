@@ -17,8 +17,12 @@ AdminSection::registerModel(Mains::class, function (ModelConfiguration $model) {
     $model->onCreateAndEdit(function() {
         return $form = AdminForm::panel()->addBody(
             AdminFormElement::text('menu', 'menu')->required()->unique(),
-            AdminFormElement::textarea('header', 'header')->setRows(2),
-            AdminFormElement::text('text', 'text')
+            AdminFormElement::text('header', 'header'),
+            AdminFormElement::textarea('text', 'text')->setRows(2),
+            AdminFormElement::select('background','background',['image'=>'image','color'=>'color']),
+            AdminFormElement::image('image','image'),
+            AdminFormElement::text('color','color')
+
         );
         return $form;
     });

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
     <script type="text/javascript" src="{!! asset('js/jquery.pagepiling.min.js') !!}"></script>
@@ -56,11 +56,30 @@
 
 <div id="pagepiling">
 
-        @foreach($pages as $page)
-            <div class="section" id="section1">
-                {{ $page->menu }}
-            </div>
-        @endforeach
+    @for($i=0;$i<count($pages);++$i)
+
+        <div class="section" id="section1">
+            {{ $pages[$i]->menu }}
+        @for($j=0;$j<count($cont);++$j)
+
+            @if($pages[$i]->id == $cont[$j]->mains_id)
+
+                <div class="container-fluid" >
+                    <div class="row">
+                        <div class="col-lg-3 col-lg-push-{{ $cont[$j]->positionX }}"  style="position:absolute;top:{{ $cont[$j]->positionY }}%">
+                            {{ $cont[$j]->content }}
+                        </div>
+                    </div>
+                </div>
+
+            @endif
+
+        @endfor
+        </div>
+    @endfor
+
+
+
 
 </div>
 

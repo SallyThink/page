@@ -67,7 +67,7 @@
 
 
 <div id="pagepiling">
-
+assdga
     @for($i=0;$i<count($pages);++$i)
 
         <div class="section" id="section1">

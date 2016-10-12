@@ -12,7 +12,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-
+agasgasg
     <script type="text/javascript" src="{!! asset('js/jquery.pagepiling.min.js') !!}"></script>
     <script type="text/javascript">
         $(document).ready(function() {

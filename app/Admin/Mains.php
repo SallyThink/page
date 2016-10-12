@@ -18,8 +18,8 @@ AdminSection::registerModel(Mains::class, function (ModelConfiguration $model) {
             AdminFormElement::select('published','Published',['1'=>'Yes','0'=>'No']),
             AdminFormElement::text('name', 'Name')->required()->unique(),
             AdminFormElement::text('page_name', 'Page Name'),
-            /* AdminFormElement::select('background','background',['image'=>'image','color'=>'color']),
-             AdminFormElement::image('image','image'),*/
+           /* AdminFormElement::select('background','background',['image'=>'image','color'=>'color']),
+            AdminFormElement::image('image','image'),*/
             AdminFormElement::text('background','Background')
         );
     });

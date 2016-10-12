@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMainsTable extends Migration
+class CreateContentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateMainsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mains', function (Blueprint $table) {
+        Schema::create('contents', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',32);
-            $table->string('page_name',128);
-            $table->string('background',512);
-            $table->enum('published',['0','1'])->default('1');
+            $table->integer('mains_id');
+            $table->string('content_name');
+            $table->string('content');
+            $table->string('width');
+            $table->string('positionX');
+            $table->string('positionY');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateMainsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mains');
+        Schema::dropIfExists('contents');
     }
 }

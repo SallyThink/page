@@ -11,10 +11,11 @@ AdminSection::registerModel(Content::class, function (ModelConfiguration $model)
     // Display
     $model->onDisplay(function () {
         $display = AdminDisplay::table()->setColumns([
-            AdminColumn::link('menu')->setLabel('Title')->setWidth('400px'),
-            AdminColumn::image('background')
-                ->setLabel('Photo<br/><small>(image)</small>')
-                ->setWidth('100px'),
+            AdminColumn::text('id'),
+            AdminColumn::link('content_name')->setLabel('Content Name')->setWidth('400px'),
+            AdminColumn::text('content')->setLabel('Text'),
+            AdminColumn::text('positionX')->setLabel('Horizontal Position'),
+            AdminColumn::text('positionY')->setLabel('Vertical Position')
         ]);
         $display->paginate(15);
         return $display;
@@ -34,7 +35,7 @@ AdminSection::registerModel(Content::class, function (ModelConfiguration $model)
             AdminFormElement::text('content_name', 'Content Name'),
             AdminFormElement::textarea('content', 'Content Text')->setRows(3),
             AdminFormElement::radio('positionX','Horizontal Position',[1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10, 11=>11, 12=>12]),
-            AdminFormElement::radio('positionY','Vertical Position',[1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10, 11=>11, 12=>12])
+            AdminFormElement::radio('positionY','Vertical Position',[1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10])
 
         );
 

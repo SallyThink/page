@@ -15,10 +15,10 @@ class CreateMainsTable extends Migration
     {
         Schema::create('mains', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('menu',32);
-            $table->string('header',128);
-            $table->string('text',512);
-            $table->enum('published',['yes','no'])->default('yes');
+            $table->string('name',32);
+            $table->string('page_name',128);
+            $table->string('background',512);
+            $table->enum('published',['0','1'])->default('1');
             $table->timestamps();
         });
     }

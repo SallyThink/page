@@ -22,11 +22,11 @@ AdminSection::registerModel(Content::class, function (ModelConfiguration $model)
     });
     // Create And Edit
     $model->onCreateAndEdit(function(Mains $mains) {
-        $pages = $mains::select('id','menu')->get();
+        $pages = $mains::select('id','name')->get();
         $pageForSelect = [];
         foreach($pages as $v)
         {
-            $pageForSelect[$v->id] = $v->menu;
+            $pageForSelect[$v->id] = $v->name;
         }
 
         return $form = AdminForm::panel()->addBody(
@@ -34,6 +34,7 @@ AdminSection::registerModel(Content::class, function (ModelConfiguration $model)
             AdminFormElement::select('mains_id', 'Page', $pageForSelect),
             AdminFormElement::text('content_name', 'Content Name'),
             AdminFormElement::textarea('content', 'Content Text')->setRows(3),
+            AdminFormElement::select('width','Width',[1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10, 11=>11, 12=>12]),
             AdminFormElement::radio('positionX','Horizontal Position',[1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10, 11=>11, 12=>12]),
             AdminFormElement::radio('positionY','Vertical Position',[1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10])
 

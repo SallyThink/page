@@ -78,7 +78,7 @@
 
                 <div class="container-fluid" >
                     <div class="row">
-                        <div class="sectionElement col-lg-3 col-lg-push-{{ $cont[$j]->positionX }}"  style="top:{{ $cont[$j]->positionY }}%">
+                        <div class="sectionElement col-lg-{{ $cont[$j]->width }} col-lg-push-{{ $cont[$j]->positionX }}"  style="top:{{ $cont[$j]->positionY }}%">
                             {{ $cont[$j]->content }}
                         </div>
                     </div>

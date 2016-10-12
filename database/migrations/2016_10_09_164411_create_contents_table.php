@@ -18,6 +18,7 @@ class CreateContentsTable extends Migration
             $table->integer('mains_id');
             $table->string('content_name');
             $table->string('content');
+            $table->string('width');
             $table->string('positionX');
             $table->string('positionY');
             $table->timestamps();

@@ -19,12 +19,12 @@
             $('#pagepiling').pagepiling({
                 //direction: 'horizontal',
                 menu: '#menu',
+
                 anchors: [
                     @foreach($pages as $v)
                             '{{ $v->page_name }}',
                     @endforeach
                 ],
-
                 sectionsColor: [
                     @foreach($pages as $v)
                             '{{ $v->background }}',
@@ -67,7 +67,7 @@
 
 
 <div id="pagepiling">
-assdga
+
     @for($i=0;$i<count($pages);++$i)
 
         <div class="section" id="section1">

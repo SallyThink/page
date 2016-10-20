@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <title>{{ $generalSetting[0]->headTitle }}</title>
+
     <link rel="stylesheet" type="text/css" href="{!! asset('css/jquery.pagepiling.css') !!}" />
     <link rel="stylesheet" type="text/css" href="{!! asset('css/examples.css') !!}" />
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -12,14 +14,24 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="{!! asset('js/jquery.pagepiling.min.js') !!}"></script>
     <script type="text/javascript">
+
+        // get direction
+        @if($generalSetting[0]->direction == 'random')
+            <? $random = [0=>'vertical',1=>'horizontal'];
+                $direction = $random[mt_rand(0,1)]; ?>
+        @else
+            <? $direction = $generalSetting[0]->direction ?>
+        @endif
+
+
         $(document).ready(function() {
             /*
              * Plugin intialization
              */
             $('#pagepiling').pagepiling({
-                //direction: 'horizontal',
-                menu: '#menu',
 
+                menu: '#menu',
+                direction: '{{ $direction }}',
                 anchors: [
                     @foreach($pages as $v)
                             '{{ $v->page_name }}',
@@ -30,14 +42,19 @@
                             '{{ $v->background }}',
                     @endforeach
                 ],
-                navigation: {
-                    'position': 'right',
+                navigation:
+                @if($generalSetting[0]->navigation)
+                {
+                    'position': '{{ $generalSetting[0]->navigationPosition }}',
                     'tooltips': [
                         @foreach($pages as $v)
                                 '{{ $v->page_name }}',
                         @endforeach
                     ],
                 },
+                @else
+                        false,
+                @endif
                 afterRender: function(){
                     $('#pp-nav').addClass('custom');
                 },

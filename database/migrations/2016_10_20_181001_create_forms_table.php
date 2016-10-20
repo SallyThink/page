@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContentsTable extends Migration
+class CreateFormsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateContentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contents', function (Blueprint $table) {
+        Schema::create('forms', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('mains_id');
-            $table->string('content_name');
-            $table->string('content');
-            $table->string('width');
-            $table->string('positionX');
-            $table->string('positionY');
-            $table->string('form_id');
+            $table->string('name');
+            $table->integer('contents_id');
+            $table->string('background');
+            $table->enum('published',[0,1]);
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ class CreateContentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contents');
+        Schema::dropIfExists('forms');
     }
 }

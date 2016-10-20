@@ -2,8 +2,8 @@
 
 
 use SleepingOwl\Admin\Model\ModelConfiguration;
-use App\Admin\Model\Content;
-use App\Admin\Model\Mains;
+use App\Content;
+use App\Mains;
 
 
 AdminSection::registerModel(Content::class, function (ModelConfiguration $model) {

@@ -97,6 +97,14 @@
                         <div class="row">
                             <div class="sectionElement col-lg-{{ $cont[$j]->width }} col-lg-push-{{ $cont[$j]->positionX }}"  style="top:{{ $cont[$j]->positionY }}%">
                                 {{ $cont[$j]->content }}
+                                @if(isset($cont[$j]->form))
+                                    <form method="post">
+                                        @foreach($cont[$j]->form as $v)
+                                            <input type = {{ $v['type'] }} name = {{ $v['name'] }}
+                                                   placeholder = {{ $v['placeholder'] }}>
+                                        @endforeach
+                                    </form>
+                                @endif
                             </div>
                         </div>
                     </div>

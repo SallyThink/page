@@ -18,4 +18,24 @@ class Content extends Model
 
         return $result;
     }
+    
+    public function getContent($forms)
+    {
+        $cont = $this->select('*')->orderBy('mains_id')->get();
+
+        foreach($cont as &$v)
+        {
+            if(isset($forms[$v->id]))
+            {
+                $v->form = $forms[$v->id];
+            }
+        }
+
+        foreach($cont as $k=>$v)
+        {
+            $v->positionY = $v->positionY*9.5;
+        }
+        
+        return $cont;
+    }
 }

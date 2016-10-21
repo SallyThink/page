@@ -22,6 +22,7 @@ class CreateContentsTable extends Migration
             $table->string('positionX');
             $table->string('positionY');
             $table->string('form_id');
+            $table->string('color');
             $table->timestamps();
         });
     }

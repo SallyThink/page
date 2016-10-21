@@ -21,21 +21,26 @@ class Content extends Model
     
     public function getContent($forms)
     {
+
         $cont = $this->select('*')->orderBy('mains_id')->get();
 
-        foreach($cont as &$v)
+        if(!empty($forms))
         {
-            if(isset($forms[$v->id]))
+            foreach($cont as &$v)
             {
-                $v->form = $forms[$v->id];
+                if(isset($forms[$v->id]))
+                {
+                    $v->form = $forms[$v->id];
+                }
             }
         }
+
 
         foreach($cont as $k=>$v)
         {
             $v->positionY = $v->positionY*9.5;
         }
-        
+
         return $cont;
     }
 }

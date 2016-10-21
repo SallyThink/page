@@ -19,12 +19,7 @@ class IndexController extends Controller
         $cont = $content->getContent($forms);
         $generalSetting = $generalSetting::where('published','1')->get();
 
-
         return view('index', compact('pages','cont','generalSetting'));
     }
-    
-    private function forms()
-    {
-        
-    }
+
 }

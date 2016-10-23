@@ -11,17 +11,15 @@ class ContentTable extends Seeder
      */
     public function run()
     {
+        $color = [0=>'red',1=>'white',2=>'blue',3=>'green',4=>'grey'];
         $faker = \Faker\Factory::create();
-        for($i=0;$i<20;++$i)
+        for($i=0;$i<5;++$i)
         {
-            DB::table('contents')->insert([
-                'mains_id' => mt_rand(1,5),
-                'content_name' => $faker->Company,
-                'content' => $faker->Text,
-                'width' => mt_rand(1,12),
-                'positionX'=>mt_rand(1,12),
-                'positionY'=>mt_rand(1,10)
-
+            DB::table('mains')->insert([
+                'name' => $faker->Company,
+                'page_name' => $faker->Company,
+                'background' => $color[mt_rand(0,4)],
+                'published' => 1
             ]);
         }
     }

@@ -2,8 +2,8 @@
 
 
 use SleepingOwl\Admin\Model\ModelConfiguration;
-use App\Form;
 use App\FormField;
+use App\Content;
 
 AdminSection::registerModel(FormField::class, function (ModelConfiguration $model) {
 
@@ -11,15 +11,15 @@ AdminSection::registerModel(FormField::class, function (ModelConfiguration $mode
 
         $display = AdminDisplay::table()->setColumns([
             AdminColumn::link('name')->setLabel('Form Name')->setWidth('400px'),
-            AdminColumn::text('form_id')->setLabel('Content ID')->setWidth('400px'),
+            AdminColumn::text('content_id')->setLabel('Content ID')->setWidth('400px'),
         ]);
         return $display;
 
     });
 // Create and Edit
-    $model->onCreateAndEdit(function(Form $form) {
+    $model->onCreateAndEdit(function(Content $content) {
         return $form = AdminForm::panel()->addBody(
-            AdminFormElement::select('form_id','Form', $form->getFormId()),
+            AdminFormElement::select('content_id','Content', $content->getContentId()),
             AdminFormElement::text('name','Field Name'),
             AdminFormElement::select('type','Field Type',['text' => 'text', 'hidden' => 'hidden',
                 'submit' => 'submit', 'file' => 'file', 'color' => 'color', 'date' => 'date',

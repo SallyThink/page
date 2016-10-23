@@ -8,13 +8,13 @@ use App\Http\Requests;
 use App\Mains;
 use App\Content;
 use App\GeneralSetting;
-use App\Form;
+use App\FormField;
 
 class IndexController extends Controller
 {
-    public function horizontal(Mains $mains, Content $content, GeneralSetting $generalSetting, Form $form)
+    public function horizontal(Mains $mains, Content $content, GeneralSetting $generalSetting, FormField $formField)
     {
-        $forms = $form->getForms();
+        $forms = $formField->getFormFields();
         $pages = $mains::select('id','page_name','background')->where('published','1')->get();
         $cont = $content->getContent($forms);
         $generalSetting = $generalSetting::where('published','1')->get();

@@ -22,17 +22,22 @@ use SleepingOwl\Admin\Navigation\Page;
 // AdminSection::addMenuPage(\App\User::class)
 
 return [
-    [
-        'title' => 'Dashboard',
-        'icon'  => 'fa fa-dashboard',
-        'url'   => route('admin.dashboard'),
-    ],
 
     [
         'title' => 'Information',
         'icon'  => 'fa fa-exclamation-circle',
         'url'   => route('admin.information'),
     ],
+
+    /*[
+        'title' => "Contacts",
+        'icon' => 'fa fa-credit-card',
+        'pages' => [
+            (new Page(\App\Form::class))
+                ->setIcon('fa fa-fax')
+                ->setPriority(0)
+        ]
+    ],*/
 
     // Examples
     // [

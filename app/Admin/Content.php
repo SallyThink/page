@@ -5,7 +5,6 @@ use SleepingOwl\Admin\Model\ModelConfiguration;
 use App\Content;
 use App\Mains;
 
-
 AdminSection::registerModel(Content::class, function (ModelConfiguration $model) {
 
     // Display
@@ -20,25 +19,54 @@ AdminSection::registerModel(Content::class, function (ModelConfiguration $model)
         $display->paginate(15);
         return $display;
     });
+
+
+
     // Create And Edit
     $model->onCreateAndEdit(function(Mains $mains) {
-        $pages = $mains::select('id','name')->get();
+        $pages = $mains::select('id','page_name')->get();
         $pageForSelect = [];
         foreach($pages as $v)
         {
-            $pageForSelect[$v->id] = $v->name;
+            $pageForSelect[$v->id] = $v->page_name;
         }
 
-        return $form = AdminForm::panel()->addBody(
 
-            AdminFormElement::select('mains_id', 'Page', $pageForSelect),
-            AdminFormElement::text('content_name', 'Content Name'),
+
+        return $form = AdminForm::panel()
+
+            ->addHeader(AdminFormElement::columns()
+                ->addColumn([
+                    AdminFormElement::select('mains_id', 'Page', $pageForSelect)->required()
+                ], 3)->addColumn([
+                    AdminFormElement::text('content_name', 'Content Name')->required()
+                ], 3)
+            )
+
+            ->addElement(
+                AdminDisplay::tabbed([
+                   'Content Text' => new \SleepingOwl\Admin\Form\FormElements([
+                       AdminFormElement::textarea('content', 'Content Text')->setRows(3)->disableFilter(),
+                   ]),
+                    'Size and Position' => new \SleepingOwl\Admin\Form\FormElements([
+                        AdminFormElement::select('width','Width',[1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10, 11=>11, 12=>12]),
+                        AdminFormElement::radio('positionX','Horizontal Position',[1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10, 11=>11, 12=>12]),
+                        AdminFormElement::radio('positionY','Vertical Position',[1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10])
+                    ]),
+
+                ])
+            );
+
+            /*->addBody(
+
+
+
             AdminFormElement::textarea('content', 'Content Text')->setRows(3),
             AdminFormElement::select('width','Width',[1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10, 11=>11, 12=>12]),
             AdminFormElement::radio('positionX','Horizontal Position',[1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10, 11=>11, 12=>12]),
             AdminFormElement::radio('positionY','Vertical Position',[1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10])
 
-        );
+        );*/
 
     });
 

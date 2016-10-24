@@ -21,11 +21,11 @@ class CreateContentsTable extends Migration
             $table->string('width');
             $table->string('positionX');
             $table->string('positionY');
-            $table->string('form_id');
-            $table->string('color');
-            $table->string('background_color');
-            $table->string('border');
-            $table->string('border_radius');
+            $table->string('form_id')->nullable();
+            $table->string('color')->nullable();
+            $table->string('background_color')->nullable();
+            $table->string('border')->nullable();
+            $table->string('border_radius')->nullable();
             $table->timestamps();
         });
     }

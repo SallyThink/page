@@ -48,7 +48,10 @@
 
                     <div class="container-fluid" >
                         <div class="row">
-                            <div class="sectionElement col-lg-{{ $cont[$j]->width }} col-lg-push-{{ $cont[$j]->positionX }}"  style="top:{{ $cont[$j]->positionY }}%;color: {{ $cont[$j]->color }}; background-color: {{ $cont[$j]->background }}">
+                            <div class="sectionElement col-lg-{{ $cont[$j]->width }} col-lg-push-{{ $cont[$j]->positionX }}"
+                                 style="top:{{ $cont[$j]->positionY }}%;color: {{ $cont[$j]->color }};
+                                         background-color: {{ $cont[$j]->background_color }}; border: {{ $cont[$j]->border }};
+                                         border-radius: {{ $cont[$j]->border_radius }}">
 
                                 @if(isset($cont[$j]->form))
                                     <form method="post">

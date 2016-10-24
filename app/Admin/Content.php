@@ -54,7 +54,10 @@ AdminSection::registerModel(Content::class, function (ModelConfiguration $model)
                         AdminFormElement::radio('positionY','Vertical Position',[1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10])
                     ]),
                     'Settings' => new \SleepingOwl\Admin\Form\FormElements([
-                        AdminFormElement::text('border', 'Border(for example: 1px solid black'),
+                        AdminFormElement::text('border', 'Border(for example: 1px solid black)'),
+                        AdminFormElement::text('border_radius', 'Border radius(for exapmple 1px or 16px'),
+                        AdminFormElement::text('color', 'Text color'),
+                        AdminFormElement::text('background_color', 'Background Color')
                     ]),
                 ])
             );

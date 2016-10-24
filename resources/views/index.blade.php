@@ -16,6 +16,12 @@
     {{--fonts--}}
     @foreach($pages as $v)
          <link href={{ $v->font_url }} rel="stylesheet">
+        <style>
+            #section{{$v->id}}
+             {
+                 font-family: {{ $v->font_name }}
+             }
+        </style>
     @endforeach
 
     @include('script',['generalSetting' => $generalSetting, 'pages' => $pages])
@@ -43,7 +49,7 @@
                     <div class="container-fluid" >
                         <div class="row">
                             <div class="sectionElement col-lg-{{ $cont[$j]->width }} col-lg-push-{{ $cont[$j]->positionX }}"  style="top:{{ $cont[$j]->positionY }}%;color: {{ $cont[$j]->color }}; background-color: {{ $cont[$j]->background }}">
-                                {{ $cont[$j]->content }}
+
                                 @if(isset($cont[$j]->form))
                                     <form method="post">
                                         @foreach($cont[$j]->form as $v)

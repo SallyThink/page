@@ -27,11 +27,13 @@ return [
         'title' => 'Information',
         'icon'  => 'fa fa-exclamation-circle',
         'url'   => route('admin.information'),
+        'priority' => '10'
     ],
 
     [
         'title' => "Content attributes",
         'icon' => 'fa fa-credit-card',
+        'priority' => '3',
         'pages' => [
             (new Page(\App\FormField::class))
                 ->setIcon('fa fa-fax')

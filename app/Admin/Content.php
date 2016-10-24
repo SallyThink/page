@@ -75,5 +75,5 @@ AdminSection::registerModel(Content::class, function (ModelConfiguration $model)
 
 
 })
-    ->addMenuPage(Content::class, 0)
+    ->addMenuPage(Content::class, 1)
     ->setIcon('fa fa-file-text-o');

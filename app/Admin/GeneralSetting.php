@@ -31,5 +31,5 @@ AdminSection::registerModel(GeneralSetting::class, function (ModelConfiguration 
     });
 
 })
-    ->addMenuPage(GeneralSetting::class, 0)
+    ->addMenuPage(GeneralSetting::class, 4)
     ->setIcon('fa fa-file-text-o');

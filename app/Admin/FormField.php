@@ -28,7 +28,6 @@ AdminSection::registerModel(FormField::class, function (ModelConfiguration $mode
         );
     });
 
-})
-    ->addMenuPage(FormField::class, 0)
-    ->setIcon('fa fa-file-text-o');
+});
+
 

@@ -5,6 +5,6 @@
 Homestead.json
 Homestead.yaml
 
-
+.env
 .idea
 public/images/uploads

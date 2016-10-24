@@ -8,11 +8,15 @@
     <link rel="stylesheet" type="text/css" href="{!! asset('css/examples.css') !!}" />
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{!! asset('css/style.css') !!}" />
-
     <!-- Latest compiled and minified JavaScript -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="{!! asset('js/jquery.pagepiling.min.js') !!}"></script>
+
+    {{--fonts--}}
+    @foreach($pages as $v)
+         <link href={{ $v->font_url }} rel="stylesheet">
+    @endforeach
 
     @include('script',['generalSetting' => $generalSetting, 'pages' => $pages])
 
@@ -25,7 +29,6 @@
 
     @endforeach
 </ul>
-
 
 <div id="pagepiling">
 

@@ -29,15 +29,18 @@ return [
         'url'   => route('admin.information'),
     ],
 
-    /*[
-        'title' => "Contacts",
+    [
+        'title' => "Content attributes",
         'icon' => 'fa fa-credit-card',
         'pages' => [
-            (new Page(\App\Form::class))
+            (new Page(\App\FormField::class))
                 ->setIcon('fa fa-fax')
-                ->setPriority(0)
+                ->setPriority(0),
+            (new Page(\App\Font::class))
+                ->setIcon('fa fa-fax')
+                ->setPriority(0),
         ]
-    ],*/
+    ],
 
     // Examples
     // [

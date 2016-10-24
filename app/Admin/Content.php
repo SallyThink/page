@@ -46,7 +46,7 @@ AdminSection::registerModel(Content::class, function (ModelConfiguration $model)
             ->addElement(
                 AdminDisplay::tabbed([
                    'Content Text' => new \SleepingOwl\Admin\Form\FormElements([
-                       AdminFormElement::textarea('content', 'Content Text')->setRows(3)->disableFilter(),
+                       AdminFormElement::textarea('content', 'Content Text')->setRows(5),
                    ]),
                     'Size and Position' => new \SleepingOwl\Admin\Form\FormElements([
                         AdminFormElement::select('width','Width',[1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10, 11=>11, 12=>12]),
@@ -54,7 +54,7 @@ AdminSection::registerModel(Content::class, function (ModelConfiguration $model)
                         AdminFormElement::radio('positionY','Vertical Position',[1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10])
                     ]),
                     'Settings' => new \SleepingOwl\Admin\Form\FormElements([
-                        AdminFormElement::text('content', 'Content Text'),
+                        AdminFormElement::text('border', 'Border(for example: 1px solid black'),
                     ]),
                 ])
             );

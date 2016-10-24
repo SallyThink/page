@@ -1,6 +1,7 @@
 <?php
 
 use App\Mains;
+use App\Font;
 use SleepingOwl\Admin\Model\ModelConfiguration;
 
 AdminSection::registerModel(Mains::class, function (ModelConfiguration $model) {
@@ -21,14 +22,14 @@ AdminSection::registerModel(Mains::class, function (ModelConfiguration $model) {
     });
     // Create And Edit
 
-    $model->onCreateAndEdit(function() {
+    $model->onCreateAndEdit(function(Font $font) {
         return $form = AdminForm::panel()->addBody(
             AdminFormElement::select('published','Published',['1'=>'Yes','0'=>'No']),
-            AdminFormElement::text('name', 'Name')->required()->unique(),
-            AdminFormElement::text('page_name', 'Page Name'),
+            AdminFormElement::text('page_name', 'Page Name')->required(),
             /* AdminFormElement::select('background','background',['image'=>'image','color'=>'color']),
              AdminFormElement::image('image','image'),*/
-            AdminFormElement::text('background','Background')
+            AdminFormElement::text('background','Background'),
+            AdminFormElement::select('font_id','Font',$font->getFontsId())
         );
     });
 })

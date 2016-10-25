@@ -26,15 +26,21 @@ jQuery(function($)
             $('#picker').farbtastic('.form-group:last input');
         }
     });
-    /*
-     $('.form-control').eq(5).hide();
-     $('.form-control').eq(6).hide();
-     $('select').on('change', function ()
-     {
-     $('[name=image]').parent().hide();
-     $('#color').parent().hide();
-     var data = $(this).val();
-     $('[name='+data+']').parent().show();
-     })*/
 
+    $('#pages #background').change(function()
+    {
+        if($(this).val() == 'color')
+        {
+            $('#pages #background_color').parent().show();
+            $('[for=background]:eq(1)').parent().hide();
+        }
+        else
+        {
+            $('#pages #background_color').parent().hide();
+            $('[for=background]:eq(1)').parent().show();
+        }
+    });
+
+    $('#pages #background_color').parent().hide();
+    $('[for=background]:eq(1)').parent().hide();
 })

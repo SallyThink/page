@@ -75,6 +75,9 @@
         <div style="background-color:blue">
             <a href="http://www.dominikgorecki.com/p/block-scroll/">One</a>
             <a href="http://johnpolacek.github.io/superscrollorama/">Two</a>
+            <a href="https://codyhouse.co/demo/animated-svg-hero-slider/index.html">Three</a>
+            <a href="http://tympanus.net/Blueprints/FilterableProductGrid/">GREAT !</a>
+            <a href="https://codyhouse.co/demo/product-preview-slider/index.html#0">GREAT !</a>
         </div>
         Universal
         <div style="background-color:Red">

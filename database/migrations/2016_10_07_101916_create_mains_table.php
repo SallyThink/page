@@ -16,7 +16,7 @@ class CreateMainsTable extends Migration
         Schema::create('mains', function (Blueprint $table) {
             $table->increments('id');
             $table->string('page_name',128);
-            $table->string('background',512);
+            $table->string('background_color',512)->nullable();
             $table->enum('published',['0','1'])->default('1');
             $table->text('font_id')->nullable();
             $table->timestamps();

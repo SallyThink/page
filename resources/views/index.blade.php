@@ -19,7 +19,10 @@
         <style>
             #section{{$v->id}}
              {
-                 font-family: {{ $v->font_name }}
+                 font-family: {{ $v->font_name }};
+                 background-image: url( {{ $v->background }});
+                 background-repeat: no-repeat;
+                 background-size: 100%;
              }
         </style>
     @endforeach
@@ -40,7 +43,7 @@
 
     @for($i=0;$i<count($pages);++$i)
 
-        <div class="section" id="section1">
+        <div class="section" id="section{{ $pages[$i]->id }}">
             {{ $pages[$i]->menu }}
             @for($j=0;$j<count($cont);++$j)
 
@@ -52,12 +55,12 @@
                                  style="top:{{ $cont[$j]->positionY }}%;color: {{ $cont[$j]->color }};
                                          background-color: {{ $cont[$j]->background_color }}; border: {{ $cont[$j]->border }};
                                          border-radius: {{ $cont[$j]->border_radius }}">
-
+                                {{ $cont[$j]->content }}
                                 @if(isset($cont[$j]->form))
                                     <form method="post">
                                         @foreach($cont[$j]->form as $v)
                                             <input type = {{ $v['type'] }} name = {{ $v['name'] }}
-                                                   placeholder = {{ $v['placeholder'] }}>
+                                                   placeholder = {{ $v['placeholder'] }} value = {{ $v['value'] }}>
                                         @endforeach
                                     </form>
                                 @endif

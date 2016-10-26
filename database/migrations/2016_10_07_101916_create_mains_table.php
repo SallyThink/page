@@ -17,6 +17,7 @@ class CreateMainsTable extends Migration
             $table->increments('id');
             $table->string('page_name',128);
             $table->string('background_color',512)->nullable();
+            $table->string('background_image',512)->nullable();
             $table->enum('published',['0','1'])->default('1');
             $table->text('font_id')->nullable();
             $table->timestamps();

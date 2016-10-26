@@ -28,9 +28,9 @@ AdminSection::registerModel(Mains::class, function (ModelConfiguration $model) {
             AdminFormElement::text('page_name', 'Page Name')->required(),
             /* AdminFormElement::select('background','background',['image'=>'image','color'=>'color']),
              AdminFormElement::image('image','image'),*/
-            AdminFormElement::select('background','Background', ['color' => 'Color', 'image' => 'Image']),
+            AdminFormElement::select('background_color','Background', ['color' => 'Color', 'image' => 'Image']),
             AdminFormElement::text('background_color','Color'),
-            AdminFormElement::image('background','Image'),
+            AdminFormElement::image('background_image','Image'),
             AdminFormElement::select('font_id','Font',$font->getFontsId())
         ) ->setHtmlAttribute('id', 'pages');
     });

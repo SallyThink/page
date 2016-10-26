@@ -19,28 +19,59 @@ jQuery(function($)
 
 //color picker
     $(document).ready(function() {
-        if(window.location.pathname == '/admin/mains')
-        {
-            $('.form-control:last').val("#123456");
-            $('.form-group:last').append('<div id="picker"></div>');
-            $('#picker').farbtastic('.form-group:last input');
-        }
+
+            //$('#pages #background_color').eq(1).val("#b28bc6");
+            $('#pages #background_color').eq(1).after('<div id="picker"></div>');
+            $('#picker').farbtastic('#pages #background_color');
+
     });
 
-    $('#pages #background').change(function()
+
+
+//for PAGES in admin panel
+
+    //check background status when the page load
+    if($('#pages #background_color').eq(1).val() != '')
+    {
+        $('#pages [name=background_image]').parent().hide();
+    }
+    else if($('#pages [name=background_image]').val() != '')
+    {
+        $('#pages #background_color').eq(1).parent().hide();
+    }
+    else
+    {
+        $('#pages #background_color').eq(1).parent().hide();
+        $('#pages [name=background_image]').parent().hide();
+    }
+
+    //if background select change
+    $('#pages #background_color').eq(0).change(function()
     {
         if($(this).val() == 'color')
         {
-            $('#pages #background_color').parent().show();
-            $('[for=background]:eq(1)').parent().hide();
+            $('#pages #background_color').eq(1).parent().show();
+            $('#pages [name=background_image]').parent().hide();
         }
         else
         {
-            $('#pages #background_color').parent().hide();
-            $('[for=background]:eq(1)').parent().show();
+            $('#pages #background_color').eq(1).parent().hide();
+            $('#pages [name=background_image]').parent().show();
         }
     });
 
-    $('#pages #background_color').parent().hide();
-    $('[for=background]:eq(1)').parent().hide();
+    //when save button click
+    $('[value=save_and_continue]').eq(0).click(function(event)
+    {
+        if($('#pages #background_color').eq(1).is(':visible'))
+        {
+            $('#pages [name=background_image]').remove();
+        }
+        else
+        {
+            $('#pages #background_color').remove();
+        }
+    })
+
+
 })

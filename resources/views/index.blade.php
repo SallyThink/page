@@ -20,16 +20,16 @@
             #section{{$v->id}}
              {
                  font-family: {{ $v->font_name }};
-                 background-image: url( {{ $v->background }});
+                 background-image: url( {{ $v->background_image }} );
                  background-repeat: no-repeat;
                  background-size: 100%;
+                 background-color: {{ $v->background_color }};
              }
         </style>
     @endforeach
 
     @include('script',['generalSetting' => $generalSetting, 'pages' => $pages])
 
-</head>
 <body>
 <ul id="menu">
     @foreach($pages as $v)
@@ -57,11 +57,16 @@
                                          border-radius: {{ $cont[$j]->border_radius }}">
                                 {{ $cont[$j]->content }}
                                 @if(isset($cont[$j]->form))
-                                    <form method="post">
+                                    <form method = "post" action = "/form">
                                         @foreach($cont[$j]->form as $v)
-                                            <input type = {{ $v['type'] }} name = {{ $v['name'] }}
-                                                   placeholder = {{ $v['placeholder'] }} value = {{ $v['value'] }}>
+                                            <div class="form-group">
+                                            <input class="form-control" type = {{ $v['type'] }} name = {{ $v['name'] }}
+                                                   placeholder = {{ $v['placeholder'] }}
+                                            value = {{ $v['value'] or '' }}>
+                                            </div>
                                         @endforeach
+                                        <input type = 'hidden' name = '_content_id' value = {{ $cont[$j]->id }}>
+                                            {{ csrf_field() }}
                                     </form>
                                 @endif
                             </div>

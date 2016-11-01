@@ -24,7 +24,7 @@
             ],
             sectionsColor: [
                 @foreach($pages as $v)
-                        '{{ $v->background }}',
+                        '{{ $v->background_color }}',
                 @endforeach
             ],
             navigation:

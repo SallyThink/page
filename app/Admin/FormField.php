@@ -24,7 +24,8 @@ AdminSection::registerModel(FormField::class, function (ModelConfiguration $mode
             AdminFormElement::select('type','Field Type',['text' => 'text', 'hidden' => 'hidden',
                 'submit' => 'submit', 'file' => 'file', 'color' => 'color', 'date' => 'date',
                 'datetime-local' => 'datetime-local', 'email' => 'email', 'number' => 'number',]),
-            AdminFormElement::text('placeholder','Placeholder')
+            AdminFormElement::text('placeholder','Placeholder'),
+            AdminFormElement::text('value','Value')
         );
     });
 

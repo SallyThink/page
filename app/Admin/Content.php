@@ -57,10 +57,12 @@ AdminSection::registerModel(Content::class, function (ModelConfiguration $model)
                         AdminFormElement::text('border', 'Border(for example: 1px solid black)'),
                         AdminFormElement::text('border_radius', 'Border radius(for exapmple 1px or 16px'),
                         AdminFormElement::text('color', 'Text color'),
-                        AdminFormElement::text('background_color', 'Background Color')
+                        AdminFormElement::select('background_color','Background', ['color' => 'Color', 'image' => 'Image']),
+                        AdminFormElement::text('background_color','Color'),
+                        AdminFormElement::image('background_image','Image'),
                     ]),
                 ])
-            );
+            )->setHtmlAttribute('id', 'pages');
 
             /*->addBody(
 

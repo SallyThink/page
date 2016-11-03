@@ -46,7 +46,7 @@ AdminSection::registerModel(Content::class, function (ModelConfiguration $model)
             ->addElement(
                 AdminDisplay::tabbed([
                    'Content Text' => new \SleepingOwl\Admin\Form\FormElements([
-                       AdminFormElement::textarea('content', 'Content Text')->setRows(5),
+                       AdminFormElement::ckeditor('content', 'Content Text'),
                    ]),
                     'Size and Position' => new \SleepingOwl\Admin\Form\FormElements([
                         AdminFormElement::select('width','Width',[1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10, 11=>11, 12=>12])->required(),

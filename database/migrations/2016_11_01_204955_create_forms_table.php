@@ -17,7 +17,6 @@ class CreateFormsTable extends Migration
             $table->increments('id');
             $table->integer('form_number');
             $table->integer('content_id');
-            $table->string('name');
             $table->string('value')->nullable();
             $table->timestamps();
         });

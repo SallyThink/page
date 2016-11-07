@@ -15,7 +15,10 @@ class FormField extends Model
         {
             $result[$v->content_id][$k]['name'] = $v->name;
             $result[$v->content_id][$k]['type'] = $v->type;
+            $result[$v->content_id][$k]['value'] = $v->value;
             $result[$v->content_id][$k]['placeholder'] = $v->placeholder;
+            $result[$v->content_id][$k]['background_color'] = $v->background_color;
+            $result[$v->content_id][$k]['border'] = $v->border;
         }
 
         return $result;

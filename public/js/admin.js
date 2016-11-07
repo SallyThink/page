@@ -24,7 +24,7 @@ jQuery(function($)
     }
     else if($('#pages [name=background_image]').val() != '')
     {
-        $('input#background_color').parent().hide();
+        $('#pages input#background_color').parent().hide();
     }
     else
     {

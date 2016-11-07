@@ -3,29 +3,39 @@
 
 use SleepingOwl\Admin\Model\ModelConfiguration;
 use App\Form;
-
+use App\Content;
 
 
 AdminSection::registerModel(Form::class, function (ModelConfiguration $model) {
 
     // Display
     $model->onDisplay(function () {
-        $display = AdminDisplay::table()->setColumns([
-            AdminColumn::link('id')->setLabel('ID')->setWidth('400px'),
-            AdminColumn::custom()->setLabel('Background')->setCallback(function (Form $form) {
+
+        $display = AdminDisplay::datatables()->setHtmlAttribute('class', 'table-info');
+        $display->setColumns([
+            AdminColumn::custom()->setLabel('Information')->setCallback(function (Form $form) {
+
+                $content = new App\Content;
+                $result = $content::select('content_name')->where('id', $form->content_id)->get();
+
+                return $result[0]->content_name;
+            }),
+            AdminColumn::custom()->setLabel('Information')->setCallback(function (Form $form) {
+
                 $result = '';
                 foreach(json_decode($form->value) as $k => $v)
                 {
                     $result .= $k.' : '.$v;
                     $result .= '<br>';
                 }
-                //dd($result);
+
                 return '<div style="">'.$result.'</div>';
             }),
-            AdminColumn::text('created_at')->setLabel('ID')->setWidth('400px')
+            AdminColumn::text('created_at')->setLabel('Created At')->setWidth('400px')
 
         ]);
-        $display->paginate(15);
+        $display->paginate(25);
+
         return $display;
     });
 

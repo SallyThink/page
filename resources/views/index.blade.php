@@ -52,17 +52,24 @@
                     <div class="container-fluid" >
                         <div class="row">
                             <div class="sectionElement col-lg-{{ $cont[$j]->width }} col-lg-push-{{ $cont[$j]->positionX }}"
-                                 style="top:{{ $cont[$j]->positionY }}%;color: {{ $cont[$j]->color }};
-                                         background-color: {{ $cont[$j]->background_color }}; border: {{ $cont[$j]->border }};
-                                         border-radius: {{ $cont[$j]->border_radius }}">
-                                {{ $cont[$j]->content }}
+                                 style="top:{{ $cont[$j]->positionY }}%; color: {{ $cont[$j]->color }};
+                                         background-color: {{ $cont[$j]->background_color }}; background-image: url( {{ $cont[$j]->background_image }} );
+                                         border: {{ $cont[$j]->border }}; border-radius: {{ $cont[$j]->border_radius }}">
+
+                                {!! $cont[$j]->content !!}
                                 @if(isset($cont[$j]->form))
+
                                     <form method = "post" action = "/form">
                                         @foreach($cont[$j]->form as $v)
                                             <div class="form-group">
-                                            <input class="form-control" type = {{ $v['type'] }} name = {{ $v['name'] }}
-                                                   placeholder = {{ $v['placeholder'] }}
-                                            value = {{ $v['value'] or '' }}>
+                                            <input class="'form-control" type = "{{ $v['type'] }}" name = "{{ $v['name'] }}"
+                                                   placeholder = "{{ $v['placeholder'] }}" value = "{{ $v['value'] or '' }}"
+                                                @if(isset($v['background_color']))
+                                                   style = "background-color:{{ $v['background_color'] }}"
+                                                @elseif(isset($v['border']))
+                                                   style = "border:{{ $v['border'] }}"
+                                                @endif
+                                                >
                                             </div>
                                         @endforeach
                                         <input type = 'hidden' name = '_content_id' value = {{ $cont[$j]->id }}>

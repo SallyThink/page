@@ -20,6 +20,8 @@ class CreateFormFieldsTable extends Migration
             $table->string('type');
             $table->string('placeholder');
             $table->string('value');
+            $table->string('background_color');
+            $table->string('border');
             $table->enum('required',[0,1])->default(0);
             $table->timestamps();
         });

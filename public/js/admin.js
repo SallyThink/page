@@ -2,11 +2,11 @@ jQuery(function($)
 {
 //Lazy Load
 
-    $('#lazyload [name=lazyload_id]').parent().hide();
+    $('.lazyload [name=lazyload_id]').parent().hide();
 
-    $('#lazyload').next().find('[value=save_and_continue]').click(function () {
-        var data = $('input[name=lazyload]:checked').val();
-        $('#lazyload [name=lazyload_id]').val(data);
+    $('.lazyload').find('[value=save_and_continue]').click(function () {
+
+        $('.lazyload [name=lazyload_id]').val($('input[name=lazyload]:checked').val());
     })
 
 
@@ -19,7 +19,7 @@ jQuery(function($)
         }
 
         $('#pages input#background_color').after('<div id="picker"></div>');
-       // $('#picker').farbtastic('#pages input#background_color');
+        $('#picker').farbtastic('#pages input#background_color');
     });
 
 
@@ -57,7 +57,7 @@ jQuery(function($)
     });
 
     //when save button click
-    $('#pages').next().find('[value=save_and_continue]').click(function()
+    $('#pages').find('[value=save_and_continue]').click(function()
     {
         if($('input#background_color').is(':visible'))
         {

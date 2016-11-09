@@ -4,7 +4,7 @@
     .cssload1-wrap {
         width: 195px;
         height: 195px;
-        margin: 97px auto;
+       /* margin: 97px auto;*/
         position: relative;
         perspective: 3900px;
         -o-perspective: 3900px;
@@ -183,7 +183,7 @@
 
 </style>
 
-<div class="cssload1-wrap">
+<div class="cssload1-wrap" style="position:fixed;top:41%;left:41%">
     <div class="cssload1-circle"></div>
     <div class="cssload1-circle"></div>
     <div class="cssload1-circle"></div>

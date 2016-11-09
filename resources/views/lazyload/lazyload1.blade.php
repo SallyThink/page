@@ -3,7 +3,7 @@
 
     .cssload-container {
         width: 117px;
-        margin: 0 auto;
+
     }
 
     .cssload-circle-1 {
@@ -144,7 +144,7 @@
 
 </style>
 
-<div class="cssload-container">
+<div class="cssload-container" style="position:fixed;top:45%;left:45%">
     <div class="cssload-circle-1">
         <div class="cssload-circle-2">
             <div class="cssload-circle-3">

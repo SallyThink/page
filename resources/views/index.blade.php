@@ -32,10 +32,17 @@
     @include('script',['generalSetting' => $generalSetting, 'pages' => $pages])
 
 <body>
-<div id="lazyload">
-    @include('lazyload.lazyload1')
-</div>
-    <div id='main' style="display:none">
+
+@if(isset($lazyload[0]))
+
+    <div id="lazyload" style="background-color: {{ $lazyload[0]->background_color }};
+                              background: {{ $lazyload[0]->background_image }};">
+
+            @include("lazyload.lazyload".$lazyload[0]->lazyload_id)
+    </div>
+@endif
+
+    <div id='main'>
         <ul id="menu">
             @foreach($pages as $v)
 
@@ -97,19 +104,37 @@
 
 
         </div>
-        {{--maps--}}
 
-        @if($maps)
-            @include('googlemaps', ['maps' => $maps])
-        @endif
+
 
     </div>
-<script>
-    $(document).ready(function() {
-        $('#lazyload').hide();
-        $('#main').fadeIn(1000);
-    })
 
-</script>
+@if(isset($lazyload[0]))
+    <script>
+        $(document).ready(function() {
+            setTimeout(function()
+            {
+                $('#lazyload').fadeOut(1500);
+                $('#main').fadeIn(1000);
+            }, {{ $lazyload[0]->timeout }} )
+        })
+
+    </script>
+    {{--maps--}}
+
+    @if($maps)
+        @include('googlemaps', ['maps' => $maps])
+    @endif
+
+@else
+
+    {{--maps--}}
+
+    @if($maps)
+        @include('googlemaps', ['maps' => $maps])
+    @endif
+    
+@endif
+
 </body>
 </html>

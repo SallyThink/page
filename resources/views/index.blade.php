@@ -13,13 +13,14 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="{!! asset('js/jquery.pagepiling.min.js') !!}"></script>
 
+
     {{--fonts--}}
     @foreach($pages as $v)
          <link href={{ $v->font_url }} rel="stylesheet">
         <style>
             #section{{$v->id}}
              {
-                 font-family: {{ $v->font_name }};
+                 font-family: {!! $v->font_name !!};
                  background-image: url( {{ $v->background_image }} );
                  background-repeat: no-repeat;
                  background-size: 100%;
@@ -31,65 +32,84 @@
     @include('script',['generalSetting' => $generalSetting, 'pages' => $pages])
 
 <body>
-<ul id="menu">
-    @foreach($pages as $v)
-
-        <li data-menuanchor="{{ $v->page_name }}"><a href="#{{ $v->page_name }}">{{ $v->page_name }}</a></li>
-
-    @endforeach
-</ul>
-
-<div id="pagepiling">
-
-    @for($i=0;$i<count($pages);++$i)
-
-        <div class="section" id="section{{ $pages[$i]->id }}">
-            {{ $pages[$i]->menu }}
-            @for($j=0;$j<count($cont);++$j)
-
-                @if($pages[$i]->id == $cont[$j]->mains_id)
-
-                    <div class="container-fluid" >
-                        <div class="row">
-                            <div class="sectionElement col-lg-{{ $cont[$j]->width }} col-lg-push-{{ $cont[$j]->positionX }}"
-                                 style="top:{{ $cont[$j]->positionY }}%; color: {{ $cont[$j]->color }};
-                                         background-color: {{ $cont[$j]->background_color }}; background-image: url( {{ $cont[$j]->background_image }} );
-                                         border: {{ $cont[$j]->border }}; border-radius: {{ $cont[$j]->border_radius }}">
-
-                                {!! $cont[$j]->content !!}
-                                @if(isset($cont[$j]->form))
-
-                                    <form method = "post" action = "/form">
-                                        @foreach($cont[$j]->form as $v)
-                                            <div class="form-group">
-                                            <input class="'form-control" type = "{{ $v['type'] }}" name = "{{ $v['name'] }}"
-                                                   placeholder = "{{ $v['placeholder'] }}" value = "{{ $v['value'] or '' }}"
-                                                @if(isset($v['background_color']))
-                                                   style = "background-color:{{ $v['background_color'] }}"
-                                                @elseif(isset($v['border']))
-                                                   style = "border:{{ $v['border'] }}"
-                                                @endif
-                                                >
-                                            </div>
-                                        @endforeach
-                                        <input type = 'hidden' name = '_content_id' value = {{ $cont[$j]->id }}>
-                                            {{ csrf_field() }}
-                                    </form>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-
-                @endif
-
-            @endfor
-        </div>
-    @endfor
-
-
-
-
+<div id="lazyload">
+    @include('lazyload.lazyload1')
 </div>
+    <div id='main' style="display:none">
+        <ul id="menu">
+            @foreach($pages as $v)
 
+                <li data-menuanchor="{{ $v->page_name }}"><a href="#{{ $v->page_name }}">{{ $v->page_name }}</a></li>
+
+            @endforeach
+        </ul>
+
+        <div id="pagepiling">
+
+            @include('ribbon',['ribbon' => $ribbon])
+
+            @for($i=0;$i<count($pages);++$i)
+
+                <div class="section" id="section{{ $pages[$i]->id }}">
+                    {{ $pages[$i]->menu }}
+                    @for($j=0;$j<count($cont);++$j)
+
+                        @if($pages[$i]->id == $cont[$j]->mains_id)
+
+                            <div class="container-fluid" id="{{ $cont[$j]->id }}" >
+                                <div class="row">
+                                    <div class="sectionElement col-lg-{{ $cont[$j]->width }} col-lg-push-{{ $cont[$j]->positionX }}"
+                                         style="top:{{ $cont[$j]->positionY }}%; color: {{ $cont[$j]->color }};
+                                                 background-color: {{ $cont[$j]->background_color }}; background-image: url( {{ $cont[$j]->background_image }} );
+                                                 border: {{ $cont[$j]->border }}; border-radius: {{ $cont[$j]->border_radius }}">
+
+                                        {!! $cont[$j]->content !!}
+                                        @if(isset($cont[$j]->form))
+
+                                            <form method = "post" action = "/form">
+                                                @foreach($cont[$j]->form as $v)
+                                                    <div class="form-group">
+                                                        <input class="form-control" type = "{{ $v['type'] }}" name = "{{ $v['name'] }}"
+                                                               placeholder = "{{ $v['placeholder'] }}" value = "{{ $v['value'] or '' }}"
+                                                               @if(isset($v['background_color']))
+                                                               style = "background-color:{{ $v['background_color'] }}"
+                                                               @elseif(isset($v['border']))
+                                                               style = "border:{{ $v['border'] }}"
+                                                                @endif
+                                                        >
+                                                    </div>
+                                                @endforeach
+                                                <input type = 'hidden' name = '_content_id' value = {{ $cont[$j]->id }}>
+                                                {{ csrf_field() }}
+                                            </form>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                        @endif
+
+                    @endfor
+                </div>
+            @endfor
+
+
+
+
+        </div>
+        {{--maps--}}
+
+        @if($maps)
+            @include('googlemaps', ['maps' => $maps])
+        @endif
+
+    </div>
+<script>
+    $(document).ready(function() {
+        $('#lazyload').hide();
+        $('#main').fadeIn(1000);
+    })
+
+</script>
 </body>
 </html>

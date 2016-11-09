@@ -13,7 +13,7 @@ AdminSection::registerModel(Form::class, function (ModelConfiguration $model) {
 
         $display = AdminDisplay::datatables()->setHtmlAttribute('class', 'table-info');
         $display->setColumns([
-            AdminColumn::custom()->setLabel('Information')->setCallback(function (Form $form) {
+            AdminColumn::custom()->setLabel('Content Name')->setCallback(function (Form $form) {
 
                 $content = new App\Content;
                 $result = $content::select('content_name')->where('id', $form->content_id)->get();
@@ -31,7 +31,7 @@ AdminSection::registerModel(Form::class, function (ModelConfiguration $model) {
 
                 return '<div style="">'.$result.'</div>';
             }),
-            AdminColumn::text('created_at')->setLabel('Created At')->setWidth('400px')
+            AdminColumn::text('created_at')->setLabel('Created At')
 
         ]);
         $display->paginate(25);
@@ -49,4 +49,5 @@ AdminSection::registerModel(Form::class, function (ModelConfiguration $model) {
 
 })
     ->addMenuPage(Form::class, 0)
-    ->setIcon('fa fa-bank');
+    ->setIcon('fa fa-bank')
+    ->setTitle('Form Information');

@@ -37,10 +37,19 @@ return [
         'pages' => [
             (new Page(\App\FormField::class))
                 ->setIcon('fa fa-fax')
-                ->setPriority(0),
+                ->setPriority(1),
             (new Page(\App\Font::class))
                 ->setIcon('fa fa-fax')
                 ->setPriority(0),
+            (new Page(\App\Map::class))
+                ->setIcon('fa fa-fax')
+                ->setPriority(2),
+            (new Page(\App\Ribbon::class))
+                ->setIcon('fa fa-fax')
+                ->setPriority(3),
+            (new Page(\App\Lazyload::class))
+                ->setIcon('fa fa-fax')
+                ->setPriority(4),
         ]
     ],
 

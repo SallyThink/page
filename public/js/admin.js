@@ -1,5 +1,14 @@
 jQuery(function($)
 {
+//Lazy Load
+
+    $('#lazyload [name=lazyload_id]').parent().hide();
+
+    $('#lazyload').next().find('[value=save_and_continue]').click(function () {
+        var data = $('input[name=lazyload]:checked').val();
+        $('#lazyload [name=lazyload_id]').val(data);
+    })
+
 
 //color picker
     $(document).ready(function() {
@@ -10,7 +19,7 @@ jQuery(function($)
         }
 
         $('#pages input#background_color').after('<div id="picker"></div>');
-        $('#picker').farbtastic('#pages input#background_color');
+       // $('#picker').farbtastic('#pages input#background_color');
     });
 
 
@@ -48,7 +57,7 @@ jQuery(function($)
     });
 
     //when save button click
-    $('[value=save_and_continue]').eq(0).click(function(event)
+    $('#pages').next().find('[value=save_and_continue]').click(function()
     {
         if($('input#background_color').is(':visible'))
         {
@@ -62,3 +71,14 @@ jQuery(function($)
 
 
 })
+
+
+
+
+
+
+
+
+
+
+

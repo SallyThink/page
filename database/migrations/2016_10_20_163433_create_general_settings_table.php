@@ -20,6 +20,14 @@ class CreateGeneralSettingsTable extends Migration
             $table->string('direction');
             $table->enum('navigation',[0,1])->default(1);
             $table->enum('navigationPosition',['left','right'])->default('right');
+            $table->string('menu_buttons_position')->nullable();
+            $table->string('color')->nullable();
+            $table->string('hover_color')->nullable();
+            $table->string('border')->nullable();
+            $table->string('border_radius')->nullable();
+            $table->string('background_color')->nullable();
+            $table->string('hover_background_color')->nullable();
+            $table->string('active_background_color')->nullable();
             $table->timestamps();
         });
     }

@@ -16,6 +16,35 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
+#generalPicker
+{
+  display: none;
+  position: fixed;
+  top: 25%;
+  left: 60%;
+  background : rgba(245,123,30,0.8);
+  z-index: 9999;
+  padding: 50px;
+  border-radius: 144px;
+}
+#generalPicker button
+{
+  margin-left: 40%;
+  margin-top: 10%;
+}
+#generalPicker #close
+{
+  margin-left: 39%;
+  cursor: pointer
+}
+#generalPicker #close:hover
+{
+  margin-left: 39%;
+  cursor: pointer;
+  color: white;
+}
+
+
 .lazyloadexample
 {
   float:left;

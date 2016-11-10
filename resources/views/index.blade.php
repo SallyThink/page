@@ -13,6 +13,30 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="{!! asset('js/jquery.pagepiling.min.js') !!}"></script>
 
+    <style>
+        #menu li
+        {
+            border : {{ $generalSetting[0]->border }};
+            border-radius : {{ $generalSetting[0]->border_radius }};
+            background-color : {{ $generalSetting[0]->background_color }};
+        }
+        #menu li:hover
+        {
+            background-color : {{ $generalSetting[0]->hover_background_color }};
+        }
+        #menu .active
+        {
+            background-color: {{ $generalSetting[0]->active_background_color }}!important;
+        }
+        #menu a
+        {
+            color : {{ $generalSetting[0]->color }}!important;
+        }
+        #menu a:hover
+        {
+            color : {{ $generalSetting[0]->hover_color }}!important;
+        }
+    </style>
 
     {{--fonts--}}
     @foreach($pages as $v)
@@ -36,14 +60,14 @@
 @if(isset($lazyload[0]))
 
     <div id="lazyload" style="background-color: {{ $lazyload[0]->background_color }};
-                              background: {{ $lazyload[0]->background_image }};">
+                              background-image: {{ $lazyload[0]->background_image }};">
 
             @include("lazyload.lazyload".$lazyload[0]->lazyload_id)
     </div>
 @endif
 
     <div id='main'>
-        <ul id="menu">
+        <ul id="menu" class="col-lg-push-6">
             @foreach($pages as $v)
 
                 <li data-menuanchor="{{ $v->page_name }}"><a href="#{{ $v->page_name }}">{{ $v->page_name }}</a></li>
@@ -120,21 +144,15 @@
         })
 
     </script>
-    {{--maps--}}
-
-    @if($maps)
-        @include('googlemaps', ['maps' => $maps])
-    @endif
-
-@else
-
-    {{--maps--}}
-
-    @if($maps)
-        @include('googlemaps', ['maps' => $maps])
-    @endif
-    
 @endif
+
+
+{{--map--}}
+
+@if($maps)
+    @include('googlemaps', ['maps' => $maps])
+@endif
+
 
 </body>
 </html>

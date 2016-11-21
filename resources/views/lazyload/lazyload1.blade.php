@@ -144,7 +144,7 @@
 
 </style>
 
-<div class="cssload-container" style="position:fixed;top:45%;left:45%">
+<div class="cssload-container" @if(substr($_SERVER['REQUEST_URI'], 0, 6) !0202= '/admin') style="position:fixed;top:45%;left:45%" @endif>
     <div class="cssload-circle-1">
         <div class="cssload-circle-2">
             <div class="cssload-circle-3">

@@ -183,7 +183,8 @@
 
 </style>
 
-<div class="cssload1-wrap" style="position:fixed;top:41%;left:41%">
+
+<div class="cssload1-wrap" @if(substr($_SERVER['REQUEST_URI'], 0, 6) != '/admin') style="position:fixed;top:41%;left:41%" @endif>
     <div class="cssload1-circle"></div>
     <div class="cssload1-circle"></div>
     <div class="cssload1-circle"></div>

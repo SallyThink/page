@@ -9,7 +9,6 @@ use App\Mains;
 use App\Content;
 use App\GeneralSetting;
 use App\FormField;
-use App\Font;
 use App\Map;
 use App\Ribbon;
 use App\Lazyload;
@@ -19,6 +18,7 @@ class IndexController extends Controller
     public function horizontal(Mains $mains, Content $content, GeneralSetting $generalSetting,
                                FormField $formField, Map $map, Ribbon $ribbon, Lazyload $lazyload)
     {
+        
         $forms = $formField->getFormFields();
         $pages = $mains::select('mains.id', 'mains.page_name', 'mains.background_color', 'mains.background_image', 'fonts.font_name', 'fonts.font_url')->leftJoin('fonts','fonts.id','=','mains.font_id')->where('mains.published','1')->get();
         $cont = $content->getContent($forms);

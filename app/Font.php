@@ -14,6 +14,7 @@ class Font extends Model
         {
             $result[$v->id] = $v->font_name;
         }
+        
         return $result;
     }
 }

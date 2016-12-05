@@ -24,6 +24,7 @@ class CreateContentsTable extends Migration
             $table->string('form_id')->nullable();
             $table->string('color')->nullable();
             $table->string('background_color')->nullable();
+            $table->string('background_image')->nullable();
             $table->string('border')->nullable();
             $table->string('border_radius')->nullable();
             $table->timestamps();

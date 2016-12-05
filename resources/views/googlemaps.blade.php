@@ -13,6 +13,7 @@
             $('body').find('#{{ $maps[0]->content_id }} .sectionElement').append('<div id="map"></div>');
         })
     </script>
+
 <script>
 
     function initMap() {
@@ -25,14 +26,18 @@
         });
 
 
-        var infowindow = new google.maps.InfoWindow({
-            content: '{!! $maps[0]->marker !!}'
-        });
+        @if($maps[0]->marker)
 
-        var marker = new google.maps.Marker({
-            position: center,
-            map: map
-        });
+            var infowindow = new google.maps.InfoWindow({
+                    content: '{!! $maps[0]->marker !!}'
+                });
+
+            var marker = new google.maps.Marker({
+                position: center,
+                map: map
+            });
+
+        @endif
 
         infowindow.open(map, marker);
 

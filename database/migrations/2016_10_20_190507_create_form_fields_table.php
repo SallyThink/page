@@ -15,7 +15,7 @@ class CreateFormFieldsTable extends Migration
     {
         Schema::create('form_fields', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('form_id');
+            $table->integer('content_id');
             $table->string('name');
             $table->string('type');
             $table->string('placeholder');

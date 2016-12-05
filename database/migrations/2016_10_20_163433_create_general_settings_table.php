@@ -16,6 +16,7 @@ class CreateGeneralSettingsTable extends Migration
         Schema::create('general_settings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('headTitle');
+            $table->enum('plugin',['pagepilling','scroolmagic']);
             $table->enum('published',[0,1])->default(1);
             $table->string('direction');
             $table->enum('navigation',[0,1])->default(1);

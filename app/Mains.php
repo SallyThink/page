@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mains extends Model
 {
-    //
+    public function main()
+    {
+        return $this->select('mains.id', 'mains.page_name', 'mains.background_color', 'mains.background_image', 'fonts.font_name', 'fonts.font_url')
+            ->leftJoin('fonts','fonts.id','=','mains.font_id')->where('mains.published','1')->get();
+    }
 }

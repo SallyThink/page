@@ -1,7 +1,7 @@
 
 
 <div class="forkit-curtain" style='background-color:{{ $ribbon[0]->background_color }};
-        background_image:{{ $ribbon[0]->background_image }};z-index:99'>
+        background-image: url({{ $ribbon[0]->background_image }});z-index:99'>
     {!! $ribbon[0]->main_text !!}
 
     <div class="close-button" style="z-index: 99">X</div>

@@ -12,6 +12,7 @@ AdminSection::registerModel(GeneralSetting::class, function (ModelConfiguration 
         $display = AdminDisplay::table()->setColumns([
             AdminColumn::link('headTitle')->setLabel('Head Title')->setWidth('400px'),
             AdminColumn::text('published')->setLabel('Head Title')->setWidth('400px'),
+            AdminColumn::text('plugin')->setLabel('Plugin')->setWidth('400px'),
         ]);
         return $display;
 
@@ -24,8 +25,13 @@ AdminSection::registerModel(GeneralSetting::class, function (ModelConfiguration 
             ->addHeader(AdminFormElement::columns()
                 ->addColumn([
                     AdminFormElement::select('published','Published',['1'=>'Yes','0'=>'No'])
-                ], 3)->addColumn([
+                ], 3)
+                ->addColumn([
                     AdminFormElement::text('headTitle','Head Title')
+                ], 3)
+                ->addColumn([
+                    AdminFormElement::select('plugin', 'plugin',['pagepilling' => 'pagepilling',
+                        'scrollmagic' => 'scrollmagic'])
                 ], 3)
             )
 

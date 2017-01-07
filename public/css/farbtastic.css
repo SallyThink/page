@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-#generalPicker
+#farbtasticPicker
 {
   display: none;
   position: fixed;
@@ -27,17 +27,17 @@
   padding: 50px;
   border-radius: 144px;
 }
-#generalPicker button
+#farbtasticPicker button
 {
-  margin-left: 40%;
+  margin-left: 35%;
   margin-top: 10%;
 }
-#generalPicker #close
+#farbtasticPicker #close
 {
   margin-left: 39%;
   cursor: pointer
 }
-#generalPicker #close:hover
+#farbtasticPicker #close:hover
 {
   margin-left: 39%;
   cursor: pointer;

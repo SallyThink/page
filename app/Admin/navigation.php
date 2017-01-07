@@ -50,6 +50,9 @@ return [
             (new Page(\App\Lazyload::class))
                 ->setIcon('fa fa-fax')
                 ->setPriority(4),
+            (new Page(\App\Carousel::class))
+                ->setIcon('fa fa-fax')
+                ->setPriority(5),
         ]
     ],
 

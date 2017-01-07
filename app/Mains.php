@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mains extends Model
 {
+    protected $fillable = ['page_name', 'background_color', 'background_image', 'created_at', 'updated_at'];
+
     public function main()
     {
         return $this->select('mains.id', 'mains.page_name', 'mains.background_color', 'mains.background_image', 'fonts.font_name', 'fonts.font_url')

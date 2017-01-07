@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Mains;
 use App\Content;
 use App\GeneralSetting;
@@ -27,5 +24,11 @@ class IndexController extends Controller
         $lazyload = $lazyload::where('published','1')->latest()->get();
 
         return view('index', compact('pages','cont','generalSetting', 'maps', 'ribbon', 'lazyload'));
+    }
+
+    public function owl()
+    {
+
+        return view('owl');
     }
 }

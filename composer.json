@@ -9,7 +9,8 @@
         "laravel/framework": "5.3.*",
         "laravelrus/sleepingowl": "4.*@dev",
         "barryvdh/laravel-debugbar": "^2.3",
-        "fzaninotto/faker": "^1.6"
+        "fzaninotto/faker": "^1.6",
+        "laravelcollective/html": "^5.3.0"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

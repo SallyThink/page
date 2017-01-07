@@ -26,6 +26,14 @@ Route::group(['prefix' => 'admin2'], function()
     Route::put('/page/edit/{id}', ['uses' => 'Admin\PageController@updatePage', 'as' => 'admin.updatePage'])
         ->where('id', '[0-9]+');
 
+    //Content
+    Route::get('/content', ['uses' => 'Admin\ContentController@allContent', 'as' => 'admin.allContent']);
+    Route::get('/content/crete', ['uses' => 'Admin\ContentController@newContent', 'as' => 'admin.newContent']);
+    Route::post('/content/crete', ['uses' => 'Admin\ContentController@createContent', 'as' => 'admin.createContent']);
+    Route::get('/content/edit/{id}', ['uses' => 'Admin\ContentController@editContent', 'as' => 'admin.editContent'])
+        ->where('id', '[0-9]+');
+    Route::put('/content/edit/{id}', ['uses' => 'Admin\ContentController@updateContent', 'as' => 'admin.updateContent'])
+        ->where('id', '[0-9]+');
 
 });
 

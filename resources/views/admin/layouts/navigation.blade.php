@@ -10,6 +10,7 @@
             <a href="#" class="brand-logo right">Logo</a>
             <ul class="left hide-on-med-and-down">
                 <li><a href={{ route('admin.allPages') }}>Pages</a></li>
+                <li><a href={{ route('admin.allContent') }}>Content</a></li>
                 <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown</a></li>
             </ul>
         </div>

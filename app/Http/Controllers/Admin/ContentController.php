@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Content;
+use App\Mains;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,8 +16,10 @@ class ContentController extends Controller
         return view('admin.content.allContent', compact('all'));
     }
 
-    public function newContent()
+    public function newContent(Mains $mains)
     {
-        return view('admin.content.content');
+        $selectPage = $mains->selectPage();
+
+        return view('admin.content.content', compact('selectPage'));
     }
 }

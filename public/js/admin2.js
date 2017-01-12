@@ -11,6 +11,7 @@ var Global =
                     })
                 }
             },
+
         Farbtastic:
             {
                 init: function ()
@@ -42,6 +43,7 @@ var Global =
                     })
                 }
             },
+
         Form:
             {
                 imageInput:  function ()
@@ -63,6 +65,29 @@ var Global =
                         $('form input[name=background_' + data + ']').parents('.input-field').show();
                     })
                 }
+            },
+
+        Ajax:
+            {
+                Send: function(form)
+                {
+                    var url = form.attr('action');
+
+                    $.ajax({
+                        method: "PUT",
+                        url: url,
+                        data: form.serializeArray(),
+                        success: function() {
+                            Materialize.toast('Done', 4000)
+                        },
+                        error: function () {
+                            Materialize.toast('Error', 4000)
+                        }
+                    })
+
+
+                }
+
             }
     }
 

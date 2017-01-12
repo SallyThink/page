@@ -14,7 +14,10 @@
                     {{ Form::text('content_name', isset($form->content_name) ? $form->content_name : '') }}
                     {{ Form::label('content_name', 'Content Name') }}
                 </div>
-
+                <div class="input-field">
+                    {{ Form::select('mains_id', $selectPage) }}
+                    {{ Form::label('mains_id', 'Select Page') }}
+                </div>
                 <ul class="collapsible popout" data-collapsible="accordion">
                     <li>
                         <div class="collapsible-header">Content text</div>
@@ -67,7 +70,7 @@
 
                 <br>
                 {{ Form::token() }}
-                <button class="btn waves-effect waves-light" type="submit">{{ isset($form) ? 'Update' : 'Create' }}</button>
+                <button class="btn waves-effect waves-teal" type="submit">{{ isset($form) ? 'Update' : 'Create' }}</button>
 
 
                 {!! Form::close() !!}

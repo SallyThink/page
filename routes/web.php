@@ -16,6 +16,7 @@ Route::group(['prefix' => 'admin2'], function()
 {
 
     Route::get('/', ['uses' => 'Admin\AdminController@index']);
+    Route::put('/sidebar', ['uses' => 'Admin\AdminController@sideBar', 'as' => 'admin.sideBar']);
 
     //Pages
     Route::get('/pages', ['uses' => 'Admin\PageController@allPages', 'as' => 'admin.allPages']);

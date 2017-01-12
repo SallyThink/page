@@ -13,3 +13,9 @@
 .hidden {
     display: none;
 }
+
+.indexCarousel
+{
+    padding-top: 40%;
+    padding-bottom: 40%;
+}

@@ -4,42 +4,46 @@ namespace App\Http\Controllers\Admin;
 
 use App\Mains;
 use App\Http\Requests\AdminRequest;
-use App\Http\Controllers\Controller;
 
-class PageController extends Controller
+class PageController extends DefaultController
 {
-    public function allPages()
+    public function all()
     {
         $all = Mains::all();
 
         return view('admin.pages.allPages', compact('all'));
     }
 
-    public function newPage()
+    public function new()
     {
-        return view('admin.pages.page', compact('item'));
+        return view('admin.pages.page');
     }
 
-    public function createPage(AdminRequest $request, Mains $mains)
+    public function create(Mains $mains)
     {
-      $mains::create($request->all());
+      $this->toSave($mains, new AdminRequest());
 
-      return redirect()->route('admin.allPages');
+      return redirect()->route('admin.page.all');
     }
 
-    public function editPage($id)
+    public function edit($id)
     {
       $item = Mains::where('id', $id)->get();
 
       return view('admin.pages.page', ['form' => $item->get(0)]);
     }
 
-    public function updatePage($id)
+    public function update($id)
     {
-        $request = AdminRequest::capture();
+        $this->toSave(new Mains(), (new AdminRequest())::capture(), $id);
 
-        Mains::where('id', $id)->update($request->except('_method', '_token'));
+        return redirect()->route('admin.page.all');
+    }
 
-        return redirect()->route('admin.allPages');
+    public function delete($id)
+    {
+        Mains::find($id)->delete();
+
+        return redirect()->route('admin.page.all');
     }
 }

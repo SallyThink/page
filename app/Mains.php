@@ -8,12 +8,21 @@ class Mains extends Model
 {
     protected $fillable = ['page_name', 'background_color', 'background_image', 'created_at', 'updated_at'];
 
+
+    /**
+     * @return mixed
+     */
     public function main()
     {
         return $this->select('mains.id', 'mains.page_name', 'mains.background_color', 'mains.background_image', 'fonts.font_name', 'fonts.font_url')
             ->leftJoin('fonts','fonts.id','=','mains.font_id')->where('mains.published','1')->get();
     }
 
+    /**
+     * Page name for select| id => name
+     *
+     * @return array
+     */
     public function selectPage()
     {
         $pages = $this->select('id', 'page_name')->get();

@@ -53,6 +53,13 @@ var Global =
                        $('#imagePreview img').attr('src', window.URL.createObjectURL(this.files[0]));
                        $('#imagePreview').fadeIn('slow');
                    });
+
+                   $('#imagePreview span').click(function()
+                   {
+                       $('#imagePreview').fadeOut('fast');
+                       $('#imagePreview img').attr('src', '');
+                       $('form input[name=issetImage]').val('');
+                   })
                 },
 
                 colorOrImage: function()

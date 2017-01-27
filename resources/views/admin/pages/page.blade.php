@@ -6,9 +6,9 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 @if(isset($form))
-                    {{ Form::open(['route' => ['admin.updatePage', $form->id], 'method'=> 'put']) }}
+                    {{ Form::open(['route' => ['admin.page.update', $form->id], 'method'=> 'put', 'files' => true]) }}
                 @else
-                    {{ Form::open(['route' => 'admin.newPage']) }}
+                    {{ Form::open(['route' => 'admin.page.new', 'files' => true]) }}
                 @endif
                 <div class="input-field">
                     {{ Form::text('page_name', isset($form->page_name) ? $form->page_name : '') }}
@@ -48,7 +48,10 @@
 
                 <br>
                 {{ Form::token() }}
-                <button class="btn waves-effect waves-light" type="submit">{{ isset($form) ? 'Update' : 'Create' }}</button>
+                <button class="btn waves-effect waves-light">{{ isset($form) ? 'Update' : 'Create' }}</button>
+
+
+                <button class="btn waves-effect waves-light" formaction={{ route('admin.page.delete', [isset($form->id) ? $form->id : '']) }}>Delete</button>
 
                 {!! Form::close() !!}
                 </div>

@@ -8,12 +8,12 @@
     ?>
 
     <div class="carousel">
-        <a class="carousel-item" href="{{ route('admin.allPages') }}">
+        <a class="carousel-item" href="{{ route('admin.page.all') }}">
             <div class="{{ $a[mt_rand(0,7)] }} indexCarousel center-align  white-text">
                 Pages
             </div>
         </a>
-        <a class="carousel-item" href="{{ route('admin.allPages') }}">
+        <a class="carousel-item" href="{{ route('admin.page.all') }}">
             <div class="{{ $a[mt_rand(0,7)] }} indexCarousel center-align  white-text">
                 Pages
             </div>

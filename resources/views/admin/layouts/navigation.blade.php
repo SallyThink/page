@@ -6,7 +6,7 @@
                 <div class="card-content white-text">
                     <span class="card-title">Admin</span>
                     <span class="right">
-                       <i class="material-icons">replay</i>
+                       <i class="material-icons" id="closeBar">replay</i>
                     </span>
                 </div>
                 <div class="card-action">
@@ -28,12 +28,14 @@
         </li>
         <li><a class="subheader">Settings</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="waves-effect" href={{ route('admin.allPages') }}>Pages</a></li>
-        <li><a class="waves-effect" href={{ route('admin.allContent') }}>Content</a></li>
+        <li><a class="waves-effect" href={{ route('admin.page.all') }}>Pages</a></li>
+        <li><a class="waves-effect" href={{ route('admin.content.all') }}>Content</a></li>
 
     </ul>
 
     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+
+
 {{session()->get('sideBar')['openAfterDownload']}}
     <script>
         jQuery(function($)
@@ -41,14 +43,18 @@
             // sideBar init
             $(".button-collapse").sideNav(
                 {
-                    draggable: false // Choose whether you can drag to open on touch screens
+                    draggable: false
                 }
             );
 
+            //open
             $('a[data-activates="slide-out"]').on('click', function(){
                 $('#sidenav-overlay').css({'display':'none'});
             });
-
+            //close
+            $('#closeBar').click(function () {
+                $('.button-collapse').sideNav('hide');
+            })
 
             //ajax init
             $('.side-nav form input').click(function () {

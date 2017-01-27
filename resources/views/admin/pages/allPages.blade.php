@@ -6,7 +6,7 @@
 
         <div class="row">
             <div class="col s12 m12 l12">
-                <a class="waves-effect waves-light btn" href="{{ route('admin.newPage') }}">Create Page</a>
+                <a class="waves-effect waves-light btn" href="{{ route('admin.page.new') }}">Create Page</a>
             @if($all->get(0))
                 <table class="bordered">
                     <thead>
@@ -20,7 +20,7 @@
                     @foreach ($all as $page)
                         <tr>
                             <td> {{ $page->id }} </td>
-                            <td><a href={{ route('admin.editPage', ['id' => $page->id]) }}>{{ $page->page_name }}</a> </td>
+                            <td><a href={{ route('admin.page.edit', ['id' => $page->id]) }}>{{ $page->page_name }}</a> </td>
                         </tr>
                     @endforeach
                     </tbody>

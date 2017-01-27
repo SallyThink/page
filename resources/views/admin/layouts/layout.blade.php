@@ -17,7 +17,7 @@
         </div>
 
         <div class="row">
-            <div class="col l12 s12 m12 {{ session()->get('sideBar')['openAfterDownload'] ? 'push-l1 push-m3 push-s5' : '' }} blue-grey lighten-4">
+            <div class="col l11 s11 m11 {{ session()->get('sideBar')['openAfterDownload'] ? 'push-l1 push-m3 push-s5' : '' }} blue-grey lighten-4">
                 @yield('container')
             </div>
         </div>

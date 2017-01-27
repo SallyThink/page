@@ -5,17 +5,20 @@
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
+
+                @include('admin.layouts.errors')
+
                 @if(isset($form))
-                    {{ Form::open(['route' => ['admin.updateContent', $form->id], 'method'=> 'put']) }}
+                    {{ Form::open(['route' => ['admin.content.update', $form->id], 'method'=> 'put', 'files' => true]) }}
                 @else
-                    {{ Form::open(['route' => 'admin.newContent']) }}
+                    {{ Form::open(['route' => 'admin.content.new', 'files' => true]) }}
                 @endif
                 <div class="input-field">
                     {{ Form::text('content_name', isset($form->content_name) ? $form->content_name : '') }}
                     {{ Form::label('content_name', 'Content Name') }}
                 </div>
                 <div class="input-field">
-                    {{ Form::select('mains_id', $selectPage) }}
+                    {{ Form::select('mains_id', $selectPage, isset($form->mains_id) ? $form->mains_id : '') }}
                     {{ Form::label('mains_id', 'Select Page') }}
                 </div>
                 <ul class="collapsible popout" data-collapsible="accordion">
@@ -43,19 +46,19 @@
                             <div class="file-field input-field hidden">
                                 <div class="btn">
                                     <span>Image</span>
-                                    {{ Form::file('background_image', isset($form->background_image) ? $form->background_image : '') }}
+                                    {{ Form::file('background_image') }}
                                 </div>
                                 <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text">
-                                </div>
-                                <div id="imagePreview">
-                                    <img src="#" alt="image" />
+                                    <input class="file-path validate" type="text" name="issetImage" value={{ isset($form->background_image) ? $form->background_image : '' }}>
                                 </div>
                             </div>
                         </div>
                     </li>
                 </ul>
-
+                <div id="imagePreview">
+                    <span>X</span>
+                    <img src={{ isset($form->background_image) ? asset('images/uploads/' . $form->background_image) : '#' }} alt="image" />
+                </div>
 
                 <div class="switch">
                     <label for="published">Published</label>
@@ -79,7 +82,6 @@
 
 
         </div>
-    </div>
     </div>
 
     <script>

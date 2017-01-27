@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Content extends Model
 {
+    protected $guarded = ['_token', '_method', 'background', 'issetImage'];
+
     public function getContentId()
     {
         $array =  $this->get();
@@ -18,7 +20,13 @@ class Content extends Model
 
         return $result;
     }
-    
+
+    /**
+     * Get content with forms and positions
+     *
+     * @param $forms
+     * @return mixed
+     */
     public function getContent($forms)
     {
 

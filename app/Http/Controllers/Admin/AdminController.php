@@ -2,25 +2,57 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminRequest;
 
-class AdminController extends Controller
+class AdminController
 {
-    public function index()
+    /**
+     * @param $name
+     * @return AdminInterface
+     */
+    private function factory($name)
     {
-        return view('admin\index');
+        return \App\Classes\AdminControllerFactory::create($name);
     }
 
-    public function sideBar(AdminRequest $request)
+    public function all($name)
     {
-        session(
-            ['sideBar' =>
-                ['openAfterDownload' =>
-                    $request->get('openAfterDownload')
-                ]
-            ]
-        );
+        $controller = $this->factory($name);
 
+        return $controller->all();
+    }
+
+    public function new($name)
+    {
+        $controller = $this->factory($name);
+
+        return $controller->new();
+    }
+
+    public function create($name)
+    {
+        $controller = $this->factory($name);
+
+        return $controller->create();
+    }
+
+    public function edit($name, $id)
+    {
+        $controller = $this->factory($name);
+
+        return $controller->edit($id);
+    }
+
+    public function update($name, $id)
+    {
+        $controller = $this->factory($name);
+
+        return $controller->update($id);
+    }
+
+    public function delete($name, $id)
+    {
+        $controller = $this->factory($name);
+
+        return $controller->delete($id);
     }
 }

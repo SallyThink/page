@@ -5,6 +5,7 @@ body {
 
 #imagePreview {
     position: relative;
+    display: none;
     width: 20%;
 }
 
@@ -35,4 +36,8 @@ body {
 
 .collapsible-body {
     padding: 5px;
+}
+
+#closeBar {
+    cursor: pointer;
 }

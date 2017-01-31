@@ -28,15 +28,13 @@
         </li>
         <li><a class="subheader">Settings</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="waves-effect" href={{ route('admin.page.all') }}>Pages</a></li>
-        <li><a class="waves-effect" href={{ route('admin.content.all') }}>Content</a></li>
+        <li><a class="waves-effect" href={{ route('admin.all', ['page']) }}>Pages</a></li>
+        <li><a class="waves-effect" href={{ route('admin.all', ['content']) }}>Content</a></li>
 
     </ul>
 
     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 
-
-{{session()->get('sideBar')['openAfterDownload']}}
     <script>
         jQuery(function($)
         {

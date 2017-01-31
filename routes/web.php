@@ -15,37 +15,20 @@ Route::post('/form', ['uses' => 'FormController@post']);
 Route::group(['prefix' => 'admin2'], function()
 {
 
-    Route::get('/', ['uses' => 'Admin\AdminController@index']);
-    Route::put('/sidebar', ['uses' => 'Admin\AdminController@sideBar', 'as' => 'admin.sideBar']);
-
-    //Pages
-    Route::get('/pages', ['uses' => 'Admin\PageController@all', 'as' => 'admin.page.all']);
-    Route::group(['prefix' => 'page'], function()
-    {
-        Route::get('/crete', ['uses' => 'Admin\PageController@new', 'as' => 'admin.page.new']);
-        Route::post('/crete', ['uses' => 'Admin\PageController@create', 'as' => 'admin.page.create']);
-        Route::get('/edit/{id}', ['uses' => 'Admin\PageController@edit', 'as' => 'admin.page.edit'])
-            ->where('id', '[0-9]+');
-        Route::put('/edit/{id}', ['uses' => 'Admin\PageController@update', 'as' => 'admin.page.update'])
-            ->where('id', '[0-9]+');
-        Route::delete('/delete/{id}', ['uses' => 'Admin\PageController@delete', 'as' => 'admin.page.delete'])
-            ->where('id', '[0-9]+');
-    });
+    Route::get('/', ['uses' => 'Admin\IndexController@index']);
+    Route::put('/sidebar', ['uses' => 'Admin\IndexController@sideBar', 'as' => 'admin.sideBar']);
 
 
-    //Content
-    Route::get('/content', ['uses' => 'Admin\ContentController@all', 'as' => 'admin.content.all']);
-    Route::group(['prefix' => 'content'], function()
-    {
-        Route::get('/crete', ['uses' => 'Admin\ContentController@new', 'as' => 'admin.content.new']);
-        Route::post('/crete', ['uses' => 'Admin\ContentController@create', 'as' => 'admin.content.create']);
-        Route::get('/edit/{id}', ['uses' => 'Admin\ContentController@edit', 'as' => 'admin.content.edit'])
-            ->where('id', '[0-9]+');
-        Route::put('/edit/{id}', ['uses' => 'Admin\ContentController@update', 'as' => 'admin.content.update'])
-            ->where('id', '[0-9]+');
-        Route::delete('/delete/{id}', ['uses' => 'Admin\ContentController@delete', 'as' => 'admin.content.delete'])
-            ->where('id', '[0-9]+');
-    });
+    Route::get('/{name}', ['uses' => 'Admin\AdminController@all', 'as' => 'admin.all']);
+    Route::get('/{name}/create', ['uses' => 'Admin\AdminController@new', 'as' => 'admin.new']);
+    Route::post('/{name}/create', ['uses' => 'Admin\AdminController@create', 'as' => 'admin.create']);
+    Route::get('/{name}/edit/{id}', ['uses' => 'Admin\AdminController@edit', 'as' => 'admin.edit'])
+        ->where('id', '[0-9]+');
+    Route::put('/{name}/edit/{id}', ['uses' => 'Admin\AdminController@update', 'as' => 'admin.update'])
+        ->where('/{name}id', '[0-9]+');
+    Route::delete('/{name}/delete/{id}', ['uses' => 'Admin\AdminController@delete', 'as' => 'admin.delete'])
+        ->where('id', '[0-9]+');
+
 
 });
 

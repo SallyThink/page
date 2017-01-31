@@ -9,9 +9,9 @@
                 @include('admin.layouts.errors')
 
                 @if(isset($form))
-                    {{ Form::open(['route' => ['admin.content.update', $form->id], 'method'=> 'put', 'files' => true]) }}
+                    {{ Form::open(['route' => ['admin.update', 'content', $form->id], 'method'=> 'put', 'files' => true]) }}
                 @else
-                    {{ Form::open(['route' => 'admin.content.new', 'files' => true]) }}
+                    {{ Form::open(['route' => ['admin.new', 'content'], 'files' => true]) }}
                 @endif
                 <div class="input-field">
                     {{ Form::text('content_name', isset($form->content_name) ? $form->content_name : '') }}
@@ -40,7 +40,7 @@
                                 {{ Form::label('background', 'background') }}
                             </div>
                             <div class="input-field hidden">
-                                {{ Form::text('background_color', isset($form->background_color) ? $form->background_color : '') }}
+                                {{ Form::text('background_color', isset($form->background_color) ? $form->background_color : '', ["autocomplete" => "off"]) }}
                                 {{ Form::label('background_color', 'Background Color') }}
                             </div>
                             <div class="file-field input-field hidden">

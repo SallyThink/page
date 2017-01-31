@@ -48,6 +48,10 @@ var Global =
             {
                 imageInput:  function ()
                 {
+                   if ('' !== $('input[name=issetImage]').val()) {
+                       $('#imagePreview').show();
+                   }
+
                    $('form input[name=background_image]').change(function()
                    {
                        $('#imagePreview img').attr('src', window.URL.createObjectURL(this.files[0]));

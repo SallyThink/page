@@ -6,7 +6,7 @@ use App\Content;
 use App\Mains;
 use App\Http\Requests\Admin\ContentRequest;
 
-class ContentController extends DefaultController implements AdminInterface
+class ContentController extends DefaultController
 {
     public function all()
     {
@@ -35,7 +35,7 @@ class ContentController extends DefaultController implements AdminInterface
 
     public function edit($id)
     {
-        $item = Content::find($id)->get();
+        $item = Content::findOrFail($id)->get();
         $selectPage = (new Mains())->selectPage();
 
         return view('admin.content.content', ['form' => $item->get(0), 'selectPage' => $selectPage]);

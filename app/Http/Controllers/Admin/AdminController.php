@@ -16,43 +16,31 @@ class AdminController
 
     public function all($name)
     {
-        $controller = $this->factory($name);
-
-        return $controller->all();
+        return $this->factory($name)->all();
     }
 
     public function new($name)
     {
-        $controller = $this->factory($name);
-
-        return $controller->new();
+        return $this->factory($name)->new();
     }
 
     public function create($name)
     {
-        $controller = $this->factory($name);
-
-        return $controller->create();
+        return $this->factory($name)->create();
     }
 
     public function edit($name, $id)
     {
-        $controller = $this->factory($name);
-
-        return $controller->edit($id);
+        return $this->factory($name)->edit($id);
     }
 
     public function update($name, $id)
     {
-        $controller = $this->factory($name);
-
-        return $controller->update($id);
+        return $this->factory($name)->update($id);
     }
 
     public function delete($name, $id)
     {
-        $controller = $this->factory($name);
-
-        return $controller->delete($id);
+        return $this->factory($name)->delete($id);
     }
 }

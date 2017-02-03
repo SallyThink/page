@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Mains;
 use App\Http\Requests\AdminRequest;
 
-class PageController extends DefaultController implements AdminInterface
+class PageController extends DefaultController
 {
 
     public function all()
@@ -22,15 +22,14 @@ class PageController extends DefaultController implements AdminInterface
 
     public function create()
     {
-      $mains = new Mains();
-      $this->toSave($mains, (new AdminRequest())::capture());
+      $this->toSave(new Mains(), (new AdminRequest())::capture());
 
       return redirect()->route('admin.all', 'page');
     }
 
     public function edit($id)
     {
-      $item = Mains::find($id)->get();
+      $item = Mains::findOrFail($id)->get();
 
       return view('admin.page', ['name' => 'page', 'form' => $item->get(0)]);
     }

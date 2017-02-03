@@ -29,8 +29,8 @@
                         </div>
                         <div class="collapsible-body">
                             <div class="input-field">
-                                {{ Form::select('directions', ['horizontal', 'vertical', 'random'],isset($form->directions) ? $form->directions : '') }}
-                                {{ Form::label('directions', 'Directions') }}
+                                {{ Form::select('direction', ['horizontal', 'vertical', 'random'],isset($form->direction) ? $form->directions : '') }}
+                                {{ Form::label('direction', 'Direction') }}
                             </div>
                             <div class="input-field">
                                 {{ Form::select('navigation', ['Yes', 'No'],isset($form->navigation) ? $form->navigation : '') }}

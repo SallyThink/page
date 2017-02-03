@@ -28,8 +28,13 @@
         </li>
         <li><a class="subheader">Settings</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="waves-effect" href={{ route('admin.all', ['page']) }}>Pages</a></li>
-        <li><a class="waves-effect" href={{ route('admin.all', ['content']) }}>Content</a></li>
+        @foreach(\App\Classes\Menu::getItems() as $item)
+            <li>
+                <a class="waves-effect" href={{ route('admin.all', [str_replace(' ', '', $item)]) }}>
+                    {{ ucfirst($item) }}
+                </a>
+            </li>
+        @endforeach
 
     </ul>
 

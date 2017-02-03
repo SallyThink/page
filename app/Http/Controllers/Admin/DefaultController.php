@@ -6,8 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Http\FormRequest;
 
-class DefaultController extends Controller
+abstract class DefaultController extends Controller implements AdminInterface
 {
+    abstract public function all();
+    abstract public function new();
+    abstract public function create();
+    abstract public function edit($id);
+    abstract public function update($id);
+    abstract public function delete($id);
+
     /**
      * @param Model $model
      * @param FormRequest $request

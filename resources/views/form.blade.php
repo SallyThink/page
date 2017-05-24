@@ -11,7 +11,7 @@
                     @endif
 
 
-autofocus="" 
+autofocus="2"
 
             >
         </div>

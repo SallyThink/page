@@ -9,6 +9,10 @@
                    @elseif(isset($v['border']))
                    style = "border:{{ $v['border'] }}"
                     @endif
+
+
+autofocus="" 
+
             >
         </div>
     @endforeach

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\PageRequest;
 use App\Mains;
-use App\Http\Requests\AdminRequest;
 
 class PageController extends DefaultController
 {
@@ -22,21 +22,21 @@ class PageController extends DefaultController
 
     public function create()
     {
-      $this->toSave(new Mains(), (new AdminRequest())::capture());
+      $this->toSave(new Mains(), (new PageRequest())::capture());
 
       return redirect()->route('admin.all', 'page');
     }
 
     public function edit($id)
     {
-      $item = Mains::findOrFail($id)->get();
+      $item = Mains::findOrFail(['id'=>$id]);
 
-      return view('admin.page', ['name' => 'page', 'form' => $item->get(0)]);
+      return view('admin.pages.page', ['form' => $item->get(0)]);
     }
 
     public function update($id)
     {
-        $this->toSave(new Mains(), (new AdminRequest())::capture(), $id);
+        $this->toSave(new Mains(), (new PageRequest())::capture(), $id);
 
         return redirect()->route('admin.all', 'page');
     }

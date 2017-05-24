@@ -25,13 +25,13 @@
                 <div class="file-field input-field hidden">
                     <div class="btn">
                         <span>Image</span>
-                        {{ Form::file('background_image', isset($form->background_image) ? $form->background_image : '') }}
+                        {{ Form::file('background_image') }}
                     </div>
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="text">
                     </div>
                     <div id="imagePreview">
-                        <img src="#" alt="image" />
+                        <img src={{ isset($form->background_image) ? "/public/images/uploads/" . $form->background_image : '#' }} alt="image" />
                     </div>
                 </div>
 

@@ -19,10 +19,4 @@ class Image
     {
         $file->move($this->uploadDir, $name);
     }
-
-    public function test()
-    {
-        return ['test1','test2','test3'];
-    }
-
 }

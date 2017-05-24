@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\ContentRequest;
 
 class ContentController extends DefaultController
 {
+
     public function all()
     {
         $content = new Content();
@@ -35,7 +36,7 @@ class ContentController extends DefaultController
 
     public function edit($id)
     {
-        $item = Content::findOrFail($id)->get();
+        $item = Content::findOrFail(['id'=>$id]);
         $selectPage = (new Mains())->selectPage();
 
         return view('admin.content.content', ['form' => $item->get(0), 'selectPage' => $selectPage]);
